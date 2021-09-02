@@ -5,8 +5,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <div class="content-wrapper">
                 <section class="content-header">
-                    <?php echo $page_title; ?>
-                    <?php echo $breadcrumb; ?>
+                    <h1><?php echo $page_title; ?></h1>
+                    
                 </section>
 
                 <section class="content">

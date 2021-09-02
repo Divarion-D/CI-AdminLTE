@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </li>
 
 
-                        <li class="header text-uppercase">Разделитель</li>
+                        <li class="header text-uppercase">ADMINLTE</li>
                         <li class="">
                             <a href="<?php echo site_url('admin/license'); ?>">
                                 <i class="fa fa-legal"></i> <span><?php echo trans('menu_license'); ?></span>
