@@ -39,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |  $autoload['packages'] = array(APPPATH.'third_party', '/usr/local/shared');
 |
 */
-$autoload['packages'] = array(APPPATH.'third_party/ion_auth');
+$autoload['packages'] = array();
 
 /*
 | -------------------------------------------------------------------
@@ -58,7 +58,7 @@ $autoload['packages'] = array(APPPATH.'third_party/ion_auth');
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('form_validation', 'ion_auth', 'template', 'common/mobile_detect');
+$autoload['libraries'] = array('database','session','form_validation', 'mobile_detect','ion_auth');
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('array', 'language', 'url');
+$autoload['helper'] = array('html','url','file','form','security','string','inflector','directory','download','language','custom');
 
 /*
 | -------------------------------------------------------------------
@@ -103,7 +103,7 @@ $autoload['helper'] = array('array', 'language', 'url');
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array('common/dp_config', 'common/dp_language');
+$autoload['config'] = array();
 
 /*
 | -------------------------------------------------------------------
@@ -132,4 +132,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('common/prefs_model');
+$autoload['model'] = array('common_model','language_model','prefs_model');
