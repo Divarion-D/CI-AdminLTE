@@ -52,7 +52,6 @@ class Admin extends Admin_Core_Controller {
 		/* Title Page */
         $this->data['page_name'] = 'users';
 		$this->data['page_title'] = trans('users');
-		$this->data['breadcrumb'] = trans('manager');
 
 		/* Get all users */
 		$this->data['users'] = $this->ion_auth->users()->result();
@@ -69,7 +68,6 @@ class Admin extends Admin_Core_Controller {
 		/* Title Page */
         $this->data['page_name'] = 'groups';
 		$this->data['page_title'] = trans('groups');
-		$this->data['breadcrumb'] = trans('groups');
 
         $this->data['groups'] = $this->ion_auth->groups()->result();
 
@@ -83,7 +81,6 @@ class Admin extends Admin_Core_Controller {
         
 		/* Title Page */
         $this->data['page_title'] = trans('prefs_interfaces');
-		$this->data['breadcrumb'] = trans('prefs_interfaces');
 
         if ($type == 'admin')
         {
@@ -164,7 +161,6 @@ class Admin extends Admin_Core_Controller {
 		/* Title Page */
         $this->data['page_name'] = 'files';
 		$this->data['page_title'] = trans('files');
-		$this->data['breadcrumb'] = trans('files');
             
         /* Data */
         $this->data['error'] = NULL;
@@ -178,7 +174,6 @@ class Admin extends Admin_Core_Controller {
 		/* Title Page */
         $this->data['page_name'] = 'database';
 		$this->data['page_title'] = trans('database');
-		$this->data['breadcrumb'] = trans('database');
 
         /* Data */
         $this->data['list_tables'] = $this->db->list_tables();
@@ -195,9 +190,6 @@ class Admin extends Admin_Core_Controller {
 		/* Title Page */
         $this->data['page_name'] = 'license';
 		$this->data['page_title'] = trans('license');
-		
-        /* Breadcrumbs */
-        $this->data['breadcrumb'] = trans('license');
 
         /* Load Template */
         $this->load->view('admin/index', $this->data);
@@ -209,9 +201,6 @@ class Admin extends Admin_Core_Controller {
         $this->data['page_name'] = 'resources';
 		$this->data['page_title'] = trans('resources');
 		
-        /* Breadcrumbs */
-        $this->data['breadcrumb'] = trans('resources');
-
         /* Load Template */
         $this->load->view('admin/index', $this->data);
         
@@ -228,9 +217,6 @@ class Admin extends Admin_Core_Controller {
         $config['file_ext_tolower'] = TRUE;
 
         $this->load->library('upload', $config);
-
-        /* Breadcrumbs */
-		$this->data['breadcrumb'] = trans('do_upload');
 
         if (!$this->upload->do_upload('userfile')){
             /* Data */
@@ -293,7 +279,6 @@ class Admin extends Admin_Core_Controller {
 		/* Title Page */
         $this->data['page_name'] = 'groups_create';
 		$this->data['page_title'] = trans('groups_create');
-		$this->data['breadcrumb'] = trans('groups_create');
 
        	/* Validate form input */
 		$this->form_validation->set_rules('group_name', 'lang:create_group_validation_name_label', 'required|alpha_dash');
@@ -336,7 +321,6 @@ class Admin extends Admin_Core_Controller {
 		/* Title Page */
         $this->data['page_name'] = 'groups_delete';
 		$this->data['page_title'] = trans('groups_delete');
-		$this->data['breadcrumb'] = trans('groups_delete');
 		
         if ( ! $this->ion_auth->is_admin())
 		{
@@ -353,7 +337,6 @@ class Admin extends Admin_Core_Controller {
 		/* Title Page */
         $this->data['page_name'] = 'groups_edit';
 		$this->data['page_title'] = trans('groups_edit');
-		$this->data['breadcrumb'] = trans('groups_edit');
 
         /* Variables */
 		$group = $this->ion_auth->group($id)->row();
@@ -421,7 +404,6 @@ class Admin extends Admin_Core_Controller {
 		/* Title Page */
         $this->data['page_name'] = 'users_create';
 		$this->data['page_title'] = trans('users_create');
-		$this->data['breadcrumb'] = trans('users_create');
 
 		/* Variables */
 		$tables = $this->config->item('tables', 'ion_auth');
@@ -519,7 +501,6 @@ class Admin extends Admin_Core_Controller {
 		/* Title Page */
         $this->data['page_name'] = 'users_delete';
 		$this->data['page_title'] = trans('users_delete');
-		$this->data['breadcrumb'] = trans('users_delete');
 		
 		$this->load->view('admin/index', $this->data);
 	}
@@ -529,7 +510,6 @@ class Admin extends Admin_Core_Controller {
 		/* Title Page */
         $this->data['page_name'] = 'users_edit';
 		$this->data['page_title'] = trans('users_edit');
-		$this->data['breadcrumb'] = trans('users_edit');
 	    
 		$id = (int) $id;
 
@@ -678,7 +658,6 @@ class Admin extends Admin_Core_Controller {
         
 		/* Title Page */
 		$this->data['page_title'] = trans('user_activate');
-		$this->data['breadcrumb'] = trans('user_activate');
         
 		$id = (int) $id;
 
@@ -708,7 +687,6 @@ class Admin extends Admin_Core_Controller {
 		/* Title Page */
         $this->data['page_name'] = 'users_deactivate';
 		$this->data['page_title'] = trans('users_deactivate');
-		$this->data['breadcrumb'] = trans('users_deactivate');
 
 		/* Validate form input */
 		$this->form_validation->set_rules('confirm', 'lang:deactivate_validation_confirm_label', 'required');
@@ -752,7 +730,6 @@ class Admin extends Admin_Core_Controller {
 		/* Title Page */
         $this->data['page_name'] = 'users_profile';
 		$this->data['page_title'] = trans('users_profile');
-		$this->data['breadcrumb'] = trans('users_profile');
 		
 		/* Data */
 		$id = (int) $id;
