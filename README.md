@@ -1,5 +1,5 @@
 # CI-AdminLTE
-CodeIgniter 3.1.10 with AdminLTE 4.0.3
+CodeIgniter 3.1.10 with AdminLTE 3.1.0
 
 ## Installation
 
