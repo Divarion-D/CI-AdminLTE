@@ -1,142 +1,135 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 ?>
-            <header class="main-header">
-                <a href="<?php echo site_url('admin/dashboard'); ?>" class="logo">
-                    <span class="logo-mini"><b>A</b><?php echo $title_mini; ?></span>
-                    <span class="logo-lg"><b>Admin</b><?php echo $title_lg; ?></span>
-                </a>
+<!-- Navbar -->
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+    </ul>
 
-                <nav class="navbar navbar-static-top" role="navigation">
-                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-
-                    <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">
-<?php if ($admin_prefs['messages_menu'] == TRUE): ?>
-                            <!-- Messages -->
-                            <li class="dropdown messages-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-envelope-o"></i>
-                                    <span class="label label-success">0</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="header"><?php echo trans('header_you_have'); ?> 0 <?php echo trans('header_message'); ?></li>
-                                    <li>
-                                        <ul class="menu">
-                                            <li><!-- start message -->
-                                                <a href="#">
-                                                    <div class="pull-left">
-                                                        <img src="<?php echo base_url('upload/avatar/m_002.png'); ?>" class="img-circle" alt="User Image">
-                                                    </div>
-                                                    <h4>Support Team<small><i class="fa fa-clock-o"></i> 5 mins</small></h4>
-                                                    <p>Why not buy a new awesome theme?</p>
-                                                </a>
-                                            </li><!-- end message -->
-                                        </ul>
-                                    </li>
-                                    <li class="footer"><a href="#"><?php echo trans('header_view_all'); ?></a></li>
-                                </ul>
-                            </li>
-
-<?php endif; ?>
-
-<?php if ($admin_prefs['notifications_menu'] == TRUE): ?>
-                            <!-- Notifications -->
-                            <li class="dropdown notifications-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-bell-o"></i>
-                                    <span class="label label-warning">0</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="header"><?php echo trans('header_you_have'); ?> 0 <?php echo trans('header_notification'); ?></li>
-                                    <li>
-                                        <ul class="menu">
-                                            <li><!-- start notification -->
-                                                <a href="#"><i class="fa fa-users text-aqua"></i> 5 new members joined today</a>
-                                            </li><!-- end notification -->
-                                        </ul>
-                                    </li>
-                                    <li class="footer"><a href="#"><?php echo trans('header_view_all'); ?></a></li>
-                                </ul>
-                            </li>
-
-<?php endif; ?>
-<?php if ($admin_prefs['tasks_menu'] == TRUE): ?>
-                            <!-- Tasks -->
-                            <li class="dropdown tasks-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-flag-o"></i>
-                                    <span class="label label-danger">0</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="header"><?php echo trans('header_you_have'); ?> 0 <?php echo trans('header_task'); ?></li>
-                                    <li>
-                                        <ul class="menu">
-                                            <li><!-- start task -->
-                                                <a href="#">
-                                                    <h3>Design some buttons<small class="pull-right">20%</small></h3>
-                                                    <div class="progress xs">
-                                                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="sr-only">20% <?php echo trans('header_complete'); ?></span>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li><!-- end task -->
-                                        </ul>
-                                    </li>
-                                    <li class="footer"><a href="#"><?php echo trans('header_view_all'); ?></a></li>
-                                </ul>
-                            </li>
-
-<?php endif; ?>
-<?php if ($admin_prefs['user_menu'] == TRUE): ?>
-                            <!-- User Account -->
-                            <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="<?php echo base_url('upload/avatar/m_001.png'); ?>" class="user-image" alt="User Image">
-                                    <span class="hidden-xs"><?php echo $user_login['username']; ?></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="user-header">
-                                        <img src="<?php echo base_url('upload/avatar/m_001.png'); ?>" class="img-circle" alt="User Image">
-                                        <p><?php echo $user_login['firstname'].$user_login['lastname']; ?><small><?php echo trans('header_member_since'); ?> <?php echo date('d-m-Y', $user_login['created_on']); ?></small></p>
-                                    </li>
-                                    <li class="user-body">
-                                        <div class="row">
-                                            <div class="col-xs-4 text-center">
-                                                <a href="#"><?php echo trans('header_followers'); ?></a>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <a href="#"><?php echo trans('header_sales'); ?></a>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <a href="#"><?php echo trans('header_friends'); ?></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="user-footer">
-                                        <div class="pull-left">
-                                            <a href="<?php echo site_url('admin/users/profile/'.$user_login['id']); ?>" class="btn btn-default btn-flat"><?php echo trans('header_profile'); ?></a>
-                                        </div>
-                                        <div class="pull-right">
-                                            <a href="<?php echo site_url('auth/logout/admin'); ?>" class="btn btn-default btn-flat"><?php echo trans('header_sign_out'); ?></a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-
-<?php endif; ?>
-<?php if ($admin_prefs['ctrl_sidebar'] == TRUE): ?>
-                            <!-- Control Sidebar Toggle Button -->
-                            <li><a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a></li>
-<?php endif; ?>
-                        </ul>
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+        <!-- Navbar Search -->
+        <li class="nav-item">
+            <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+                <i class="fas fa-search"></i>
+            </a>
+            <div class="navbar-search-block">
+                <form class="form-inline">
+                    <div class="input-group input-group-sm">
+                        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-navbar" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
                     </div>
-                </nav>
-            </header>
+                </form>
+            </div>
+        </li>
+        <?php if ($admin_prefs['messages_menu'] == TRUE) : ?>
+            <!-- Messages Dropdown Menu -->
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-comments"></i>
+                    <span class="badge badge-danger navbar-badge">3</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <a href="#" class="dropdown-item">
+                        <!-- Message Start -->
+                        <div class="media">
+                            <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    Brad Diesel
+                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">Call me whenever you can...</p>
+                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            </div>
+                        </div>
+                        <!-- Message End -->
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <!-- Message Start -->
+                        <div class="media">
+                            <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    John Pierce
+                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">I got your message bro</p>
+                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            </div>
+                        </div>
+                        <!-- Message End -->
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <!-- Message Start -->
+                        <div class="media">
+                            <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <div class="media-body">
+                                <h3 class="dropdown-item-title">
+                                    Nora Silvester
+                                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="text-sm">The subject goes here</p>
+                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                            </div>
+                        </div>
+                        <!-- Message End -->
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                </div>
+            </li>
+        <?php endif; ?>
+
+        <?php if ($admin_prefs['notifications_menu'] == TRUE) : ?>
+            <!-- Notifications Dropdown Menu -->
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-bell"></i>
+                    <span class="badge badge-warning navbar-badge">15</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-item dropdown-header">15 Notifications</span>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-envelope mr-2"></i> 4 new messages
+                        <span class="float-right text-muted text-sm">3 mins</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-users mr-2"></i> 8 friend requests
+                        <span class="float-right text-muted text-sm">12 hours</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">
+                        <i class="fas fa-file mr-2"></i> 3 new reports
+                        <span class="float-right text-muted text-sm">2 days</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                </div>
+            </li>
+        <?php endif; ?>
+
+        <li class="nav-item">
+            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                <i class="fas fa-expand-arrows-alt"></i>
+            </a>
+        </li>
+    </ul>
+</nav>
+<!-- /.navbar -->
