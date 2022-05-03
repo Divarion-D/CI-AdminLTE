@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
 ?>
 
 <!-- Content Wrapper. Contains page content -->
@@ -60,7 +59,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
                         <div class="info-box-content">
                             <span class="info-box-text">Users</span>
-                            <span class="info-box-number"><?php echo $count_users; ?></span>
+                            <span class="info-box-number">1</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -73,7 +72,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
                         <div class="info-box-content">
                             <span class="info-box-text">Security groups</span>
-                            <span class="info-box-number"><?php echo $count_groups; ?></span>
+                            <span class="info-box-number">2</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -85,7 +84,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
             <!-- Main row -->
             <div class="row">
                 <div class="col-md-6">
-
                     <div class="card card-info">
                         <div class="card-header">
                             <h3 class="card-title">Disk use space</h3>
@@ -93,8 +91,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="progress">
-                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="?php echo $disk_usepercent; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $disk_usepercent; ?>%">
-                                    <span><?php echo byte_format($disk_usespace, 2); ?>/<?php echo byte_format($disk_totalspace, 2); ?></span>
+                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                                    <span>50/100</span>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +100,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                     </div>
                 </div>
                 <div class="col-md-6">
-
                     <div class="card card-info">
                         <div class="card-header">
                             <h3 class="card-title">Memory usage</h3>
@@ -110,8 +107,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="progress">
-                                <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="<?php echo $memory_usepercent; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $memory_usepercent; ?>%">
-                                    <span><?php echo byte_format($memory_usage, 2); ?></strong>/<?php echo byte_format($memory_peak_usage, 2); ?></span>
+                                <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
+                                    <span>50</strong>/100</span>
                                 </div>
                             </div>
                         </div>

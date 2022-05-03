@@ -98,17 +98,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     </label>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label"><?php echo trans('prefs_transition_page'); ?></label>
-                                                <div class="col-sm-10">
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="transition_page" id="transition_page1" value="1" <?php echo set_value('transition_page', $value['transition_page']) == 1 ? 'checked' : NULL; ?>> <?php echo strtoupper(trans('actions_yes')); ?>
-                                                    </label>
-                                                    <label class="radio-inline">
-                                                        <input type="radio" name="transition_page" id="transition_page0" value="0" <?php echo set_value('transition_page', $value['transition_page']) == 0 ? 'checked' : NULL; ?>> <?php echo strtoupper(trans('actions_no')); ?>
-                                                    </label>
-                                                </div>
-                                            </div>
 <?php endforeach; ?>
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-10">

@@ -26,7 +26,7 @@ $system_short_name          =   CMS_config('system_short_name');
         <?php if ($mobile == TRUE && $ios == TRUE) : ?>
                 <meta name="apple-mobile-web-app-capable" content="yes">
                 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-                <meta name="apple-mobile-web-app-title" content="<?php echo $title; ?>">
+                <meta name="apple-mobile-web-app-title" content="<?php echo $page_title; ?>">
         <?php endif; ?>
         <?php if ($mobile == TRUE && $android == TRUE) : ?>
                 <meta name="mobile-web-app-capable" content="yes">
@@ -40,9 +40,7 @@ $system_short_name          =   CMS_config('system_short_name');
         <!-- Theme style -->
         <link rel="stylesheet" href="<?php echo base_url('assets/frameworks/adminlte/css/adminlte.css'); ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/frameworks/adminlte/css/skins/skin-blue.min.css'); ?>">
-        <?php if ($mobile === FALSE && $admin_prefs['transition_page'] == TRUE) : ?>
-                <link rel="stylesheet" href="<?php echo base_url('assets/plugins/animsition/animsition.min.css'); ?>">
-        <?php endif; ?>
+
         <?php if ($this->router->fetch_class() == 'groups' && ($this->router->fetch_method() == 'create' or $this->router->fetch_method() == 'edit')) : ?>
                 <link rel="stylesheet" href="<?php echo base_url('assets/plugins/colorpickersliders/colorpickersliders.min.css'); ?>">
         <?php endif; ?>
@@ -56,15 +54,11 @@ $system_short_name          =   CMS_config('system_short_name');
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
-        <?php if ($mobile === FALSE && $admin_prefs['transition_page'] == TRUE) : ?>
-                <div class="wrapper animsition">
-        <?php else : ?>
-                <div class="wrapper">
-        <?php endif; ?>
-                <!-- Preloader -->
+        <div class="wrapper">
                 <div class="preloader flex-column justify-content-center align-items-center">
-                        <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+                        <img class="animation__shake" src="/upload/Logo.png" alt="AdminLTELogo" height="60" width="60">
                 </div>
+
                 <?php include 'main_header.php'; ?>
                 <?php include 'main_sidebar.php'; ?>
 

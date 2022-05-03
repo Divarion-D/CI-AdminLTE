@@ -14,14 +14,12 @@ class Prefs_model extends CI_Model {
         $query = $this->db->get('admin_preferences');
         foreach ($query->result_array() as $value)
         {
-            $data['user_panel']         = $value['user_panel'];
             $data['sidebar_form']       = $value['sidebar_form'];
             $data['messages_menu']      = $value['messages_menu'];
             $data['notifications_menu'] = $value['notifications_menu'];
             $data['tasks_menu']         = $value['tasks_menu'];
             $data['user_menu']          = $value['user_menu'];
             $data['ctrl_sidebar']       = $value['ctrl_sidebar'];
-            $data['transition_page']    = $value['transition_page'];
         }
 
         return $data;
@@ -41,9 +39,6 @@ class Prefs_model extends CI_Model {
         $data['active']     = $user->active;
         $data['firstname']  = ! empty($user->first_name) ? htmlspecialchars($user->first_name, ENT_QUOTES, 'UTF-8') : NULL;
         $data['lastname']   = ! empty($user->last_name) ? ' '.htmlspecialchars($user->last_name, ENT_QUOTES, 'UTF-8') : NULL;
-        $data['company']    = htmlspecialchars($user->company, ENT_QUOTES, 'UTF-8');
-        $data['phone']      = ! empty($user->phone) ? $user->phone : NULL;
-
         return $data;
     }
 

@@ -6,7 +6,7 @@ class Core_Model extends CI_Model
     {
         parent::__construct();
         // timezone
-        date_default_timezone_set(laron_config('timezone'));
+        date_default_timezone_set(CMS_config('timezone'));
     }
 }
 

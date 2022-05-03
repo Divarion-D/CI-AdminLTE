@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Сен 02 2021 г., 15:52
--- Версия сервера: 10.2.40-MariaDB
--- Версия PHP: 7.3.28
+-- Время создания: Янв 09 2022 г., 21:26
+-- Версия сервера: 10.2.41-MariaDB
+-- Версия PHP: 7.3.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,16 +32,39 @@ CREATE TABLE `admin_preferences` (
   `notifications_menu` tinyint(1) NOT NULL DEFAULT 0,
   `tasks_menu` tinyint(1) NOT NULL DEFAULT 0,
   `user_menu` tinyint(1) NOT NULL DEFAULT 1,
-  `ctrl_sidebar` tinyint(1) NOT NULL DEFAULT 0,
-  `transition_page` tinyint(1) NOT NULL DEFAULT 0
+  `ctrl_sidebar` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `admin_preferences`
 --
 
-INSERT INTO `admin_preferences` (`id`, `user_panel`, `sidebar_form`, `messages_menu`, `notifications_menu`, `tasks_menu`, `user_menu`, `ctrl_sidebar`, `transition_page`) VALUES
-(1, 1, 1, 1, 1, 1, 1, 1, 1);
+INSERT INTO `admin_preferences` (`id`, `user_panel`, `sidebar_form`, `messages_menu`, `notifications_menu`, `tasks_menu`, `user_menu`, `ctrl_sidebar`) VALUES
+(1, 1, 1, 1, 1, 1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `api_keys`
+--
+
+CREATE TABLE `api_keys` (
+  `id` int(11) NOT NULL,
+  `label` varchar(250) COLLATE utf8mb4_unicode_520_ci DEFAULT 'System',
+  `key` varchar(40) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `level` int(2) NOT NULL,
+  `ignore_limits` tinyint(1) NOT NULL DEFAULT 0,
+  `is_private_key` tinyint(1) NOT NULL DEFAULT 0,
+  `ip_addresses` mediumtext COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `date_created` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Дамп данных таблицы `api_keys`
+--
+
+INSERT INTO `api_keys` (`id`, `label`, `key`, `level`, `ignore_limits`, `is_private_key`, `ip_addresses`, `date_created`) VALUES
+(1, 'Default', '48zdf654g1hsd234ye8sd54fh2315su', 1, 0, 0, NULL, 1582700749);
 
 -- --------------------------------------------------------
 
@@ -128,24 +151,6 @@ CREATE TABLE `login_attempts` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `public_preferences`
---
-
-CREATE TABLE `public_preferences` (
-  `id` int(1) NOT NULL,
-  `transition_page` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Дамп данных таблицы `public_preferences`
---
-
-INSERT INTO `public_preferences` (`id`, `transition_page`) VALUES
-(1, 0);
-
--- --------------------------------------------------------
-
---
 -- Структура таблицы `users`
 --
 
@@ -167,17 +172,15 @@ CREATE TABLE `users` (
   `last_login` int(11) UNSIGNED DEFAULT NULL,
   `active` tinyint(1) UNSIGNED DEFAULT NULL,
   `first_name` varchar(50) DEFAULT NULL,
-  `last_name` varchar(50) DEFAULT NULL,
-  `company` varchar(100) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL
+  `last_name` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `theme`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$10$w4n.1jOC43bru8DynyzFQOGAYCmG91IvmlbdIpw3gDMy/QG2SgBGO', 'admin@admin.com', 'default', NULL, '', NULL, NULL, NULL, '907f38660b464c142aab20a57ff2d107036a449e', '$2y$10$vN//YH/z16X0sQxvXCaMduMWnd5mpW6VSJFPUow/wvWP6YnRd35aG', 1268889823, 1630574085, 1, 'Admin', 'istrator', 'ADMIN', '0');
+INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `theme`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`) VALUES
+(1, '127.0.0.1', 'administrator', '$2y$10$w4n.1jOC43bru8DynyzFQOGAYCmG91IvmlbdIpw3gDMy/QG2SgBGO', 'admin@admin.com', 'default', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1641041670, 1, 'Admin', 'istrator');
 
 -- --------------------------------------------------------
 
@@ -210,6 +213,12 @@ ALTER TABLE `admin_preferences`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Индексы таблицы `api_keys`
+--
+ALTER TABLE `api_keys`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `config`
 --
 ALTER TABLE `config`
@@ -231,12 +240,6 @@ ALTER TABLE `language_list`
 -- Индексы таблицы `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `public_preferences`
---
-ALTER TABLE `public_preferences`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -269,6 +272,12 @@ ALTER TABLE `admin_preferences`
   MODIFY `id` tinyint(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT для таблицы `api_keys`
+--
+ALTER TABLE `api_keys`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT для таблицы `config`
 --
 ALTER TABLE `config`
@@ -291,12 +300,6 @@ ALTER TABLE `language_list`
 --
 ALTER TABLE `login_attempts`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT для таблицы `public_preferences`
---
-ALTER TABLE `public_preferences`
-  MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
